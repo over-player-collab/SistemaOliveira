@@ -11,11 +11,12 @@ import java.util.Date;
  * @author u07740243132
  */
 public class MpvUsuarios {
+    
     private int mpvIdUsuarios;
     private String mpvNome;
     private String mpvApelido;
     private String mpvCpf;
-    private Date mpvDataNascimento;
+    private String mpvDataNascimento;
     private int mpvNivel;
     private String mpvSenha;
     private String mpvAtivo;
@@ -79,14 +80,14 @@ public class MpvUsuarios {
     /**
      * @return the mpvDataNascimento
      */
-    public Date getMpvDataNascimento() {
+    public String getMpvDataNascimento() {
         return mpvDataNascimento;
     }
 
     /**
      * @param mpvDataNascimento the mpvDataNascimento to set
      */
-    public void setMpvDataNascimento(Date mpvDataNascimento) {
+    public void setMpvDataNascimento(String mpvDataNascimento) {
         this.mpvDataNascimento = mpvDataNascimento;
     }
 

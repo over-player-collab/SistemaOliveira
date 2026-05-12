@@ -4,6 +4,7 @@
  */
 package dao;
 
+import bean.MpvUsuarios;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,30 +16,35 @@ import testes.JdbcCrud;
 
 /**
  *
- * @author u09177187121
+ * @author u07740243132
  */
-public class DaoMpvUsuarios extends DaoAbstract{
+public class DaoMpvUsuarios extends DaoAbstract {
 
     @Override
     public void insert(Object object) {
+        MpvUsuarios mpvUsuarios = (MpvUsuarios) object;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String url, user, password;
-            url = "jdbc:mysql://10.7.0.51:33062/db_marcos_vilhanueva";
-            user = "marcos_vilhanueva";
-            password = "marcos_vilhanueva";
-            Connection cnt;
+            url = "jdbc:mysql://10.7.0.51:33062/db_marco_vilhanueva";
+            user= "marco_vilhanueva";
+            password = "marco_vilhanueva";
+            
+            Connection cnt; 
+            
             cnt = DriverManager.getConnection(url, user, password);
-            String sql = "insert into mpv_usuarios values(?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "insert into mpv_usuarios values(?,?,?,?,?,?,?,?)";
             PreparedStatement pst = cnt.prepareStatement(sql);
-            pst.setInt(1, 100);
-            pst.setString(2, "marcos");
-            pst.setString(3, "marcos");
-            pst.setString(4, "marcos");
-            pst.setDate(5, null);// mpv_datanascimento
-            pst.setInt(6, 67);
-            pst.setString(7, "marcos");
-            pst.setString(8, "marcos");
+            pst.setInt(1, mpvUsuarios.getMpvIdUsuarios());
+            pst.setString(2, mpvUsuarios.getMpvNome());
+            pst.setString(3, mpvUsuarios.getMpvApelido());
+            pst.setString(4, mpvUsuarios.getMpvCpf());
+            pst.setDate(5, null);//mpv_datanascimento
+            pst.setInt(6, mpvUsuarios.getMpvNivel()); //quando for deciaal 10,2 vai ser setDouble
+            pst.setString(7, mpvUsuarios.getMpvSenha());
+            pst.setString(8, mpvUsuarios.getMpvAtivo());
+            pst.setDouble(9, 10.2);
+            
             pst.executeUpdate();
             
         } catch (ClassNotFoundException ex) {
@@ -50,22 +56,22 @@ public class DaoMpvUsuarios extends DaoAbstract{
 
     @Override
     public void update(Object object) {
-    
+        
     }
 
     @Override
     public void delete(Object object) {
-    
+        
     }
 
     @Override
     public Object list(int id) {
-    return null;
+        return null;
     }
 
     @Override
     public Object listAll() {
-    return null;
+        return null;
     }
     
 }
